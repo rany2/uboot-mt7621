@@ -88,3 +88,8 @@ GTAGS
 *.orig
 *~
 \#*#
+
+/toolchain-mipsel_24kc_*
+/include/configs/mt7621-pin-config.h
+/archive
+/configs/mt7621_build_defconfig

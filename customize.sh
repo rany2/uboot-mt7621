@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # toolchain path
-Toolchain=$(cd ../openwrt*/toolchain-mipsel*/bin; pwd)'/mipsel-openwrt-linux-'
+if [ -z "$Toolchain" ];
+then
+	Toolchain=$(cd ./toolchain-mipsel_24kc_gcc-8.4.0_musl/bin; pwd)'/mipsel-openwrt-linux-'
+fi
 Staging=${Toolchain%/toolchain-*}
 
 echo "CROSS_COMPILE=${Toolchain}"
