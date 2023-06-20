@@ -112,10 +112,12 @@ else
 	echo "CONFIG_BAUDRATE=115200" >> ${DEFCONFIG}
 fi
 
+make clean
 make mt7621_build_defconfig
 make CROSS_COMPILE=${Toolchain} STAGING_DIR=${Staging}
 make savedefconfig
-mkdir archive
+rm -rf archive
+mkdir -p archive
 cat defconfig > archive/mt7621_defconfig
 mv u-boot-mt7621.bin archive/
 mv u-boot.img archive/
