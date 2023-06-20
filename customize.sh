@@ -46,22 +46,22 @@ else
 fi
 
 echo -e "#ifndef __CONFIG_MT7621_RESET_LED\n#define __CONFIG_MT7621_RESET_LED" \
-	>> ./include/configs/mt7621-common.h
+	> ./include/configs/mt7621-pin-config.h
 if [ "$4" -ge 0 -a "$4" -le 48 ]; then
 	echo "set reset button pin: $4"
 	echo "CONFIG_FAILSAFE_ON_BUTTON=y" >> ${DEFCONFIG}
-	echo "#define MT7621_BUTTON_RESET $4" >> ./include/configs/mt7621-common.h
+	echo "#define MT7621_BUTTON_RESET $4" >> ./include/configs/mt7621-pin-config.h
 else
 	echo "Reset button is disabled!"
 fi
 
 if [ "$5" -ge 0 -a "$5" -le 48 ]; then
 	echo "set system led pin: $5"
-	echo "#define MT7621_LED_STATUS1 $5" >> ./include/configs/mt7621-common.h
+	echo "#define MT7621_LED_STATUS1 $5" >> ./include/configs/mt7621-pin-config.h
 else
 	echo "System LED is disabled!"
 fi
-echo "#endif" >> ./include/configs/mt7621-common.h
+echo "#endif" >> ./include/configs/mt7621-pin-config.h
 
 if [ "$6" -ge 400 -a "$6" -le 1200 ]; then
 	echo "set CPU frequency: $6 MHz"

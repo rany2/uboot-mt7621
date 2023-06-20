@@ -8,6 +8,8 @@
 #ifndef __CONFIG_MT7621_COMMON_H
 #define __CONFIG_MT7621_COMMON_H
 
+#include "mt7621-pin-config.h"
+
 #define CONFIG_SYS_HZ			1000
 #define CONFIG_SYS_MIPS_TIMER_FREQ	880000000
 
