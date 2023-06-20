@@ -119,6 +119,7 @@ make clean
 make mt7621_build_defconfig
 make CROSS_COMPILE=${Toolchain} STAGING_DIR=${Staging}
 make savedefconfig
+> ./include/configs/mt7621-pin-config.h  # truncate the config file
 rm -rf archive
 mkdir -p archive
 cat defconfig > archive/mt7621_defconfig
