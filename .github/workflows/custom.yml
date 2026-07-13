@@ -77,6 +77,8 @@ jobs:
   build:
     name: Build MT7621 u-boot
     runs-on: ubuntu-latest
+    container:
+      image: pypy:2.7-7.3.23-trixie
     strategy:
        fail-fast: False
 
@@ -86,17 +88,14 @@ jobs:
         with:
           path: uboot-mt7621
 
-      - name: Install essential packages
+      - name: Install build dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install swig
-          echo 'switch to python2 as default'
-          sudo rm /usr/bin/python
-          wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
-          tar -xJf Python-2.7.18.tar.xz
-          cd Python-2.7.18
-          ./configure && sudo make && sudo make install
-          sudo ln -s /usr/bin/python2 /usr/bin/python
+          apt-get update
+          apt-get install --yes --no-install-recommends bc bison flex swig
+          ln -sf "$(command -v pypy)" /usr/local/bin/python
+          ln -sf "$(command -v pypy)" /usr/local/bin/python2
+          python --version
+          python2 --version
 
       - name: Download OpenWrt toolchain
         run: |
